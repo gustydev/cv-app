@@ -1,20 +1,20 @@
 import { useState } from 'react';
-import { initialData, initialSections } from './data';
+import { initialInfo, initialData, initialSections } from './data';
 
-function Info() {
+function Info( {data} ) {
     return (
         <div className='info'>
-            <input type="text" value='John Doe' className='name' />
-            <input type='text' value='johndoe@fakemail.net' className='email' />
-            <input type="text" value='(12) 34567-8901' className='phone' />
-            <input type="text" value='Antarctica' className='location' />
+            <div className='info-name'>{data.name}</div>
+            <div className='info-email'>{data.email}</div>
+            <div className='info-phone'>{data.phone}</div>
+            <div className='info-location'>{data.location}</div>
         </div>
     )
 }
 
 function Section( {name, data} ) {
     return (
-        <div className={'section' + ' ' + name}>
+        <div className='section'>
             <h1>{name}</h1>
             {data.map((d) => {
                 return (
@@ -34,7 +34,7 @@ function Section( {name, data} ) {
 export default function Curriculum() {
     return (
         <div className='curriculum'>
-            <Info />
+            <Info data={initialInfo} />
             <div className="sections">
                 {initialSections.map((s) => {
                     return <Section 

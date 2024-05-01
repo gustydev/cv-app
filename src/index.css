@@ -2,6 +2,10 @@ input {
     border: 0;
 }
 
+body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
 .curriculum {
     display: flex;
     flex-direction: column;
@@ -9,6 +13,14 @@ input {
 
 .info {
     display: grid;
+    justify-items: center;
+    grid-template-columns: 1fr;
+    gap: 4px;
+}
+
+.info-name {
+    font-size: 200%;
+    font-weight: bold;
 }
 
 .section {
@@ -42,4 +54,8 @@ input {
 .experience-role, 
 .experience-location {
     font-style: italic;
+}
+
+.experience-info {
+    align-self: center;
 }

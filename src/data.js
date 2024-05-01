@@ -1,3 +1,10 @@
+const initialInfo = {
+    name: 'John Doe',
+    email: 'johndoe@fakemail.com',
+    phone: '(01) 23456-7890',
+    location: 'Antarctica'
+}
+
 const initialSections = [
     {
         id: 0,
@@ -6,7 +13,7 @@ const initialSections = [
     },
     {
         id: 1,
-        title: 'Jobs',
+        title: 'Professional experience',
         dataIds: [1, 2]
     }
 ];
@@ -41,4 +48,4 @@ const initialData = [
     }
 ]
 
-export { initialSections, initialData };
+export { initialInfo, initialSections, initialData };
