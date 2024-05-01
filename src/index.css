@@ -1,3 +1,45 @@
 input {
     border: 0;
 }
+
+.curriculum {
+    display: flex;
+    flex-direction: column;
+}
+
+.info {
+    display: grid;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.section > h1 {
+    margin: 0;
+    border-bottom: 2px solid black;
+}
+
+.experience {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr) 2fr;
+    grid-template-columns: 3fr 1fr;
+}
+
+.experience-location, 
+.experience-date {
+    justify-self: end;
+}
+
+.experience-title, 
+.experience-date {
+    font-weight: bold;
+}
+
+.experience-role, 
+.experience-location {
+    font-style: italic;
+}

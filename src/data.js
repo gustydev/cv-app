@@ -7,7 +7,7 @@ const initialSections = [
     {
         id: 1,
         title: 'Jobs',
-        dataIds: [1]
+        dataIds: [1, 2]
     }
 ];
 
@@ -29,6 +29,15 @@ const initialData = [
         role: 'Master Accountant',
         info: 'I account for all of the things, nothing gets past',
         location: 'New York City'
+    },
+    {
+        id: 2,
+        title: 'Joe Mama Restaurant',
+        startDate: 'Today',
+        endDate: 'Tomorrow',
+        role: 'Master Chef',
+        info: "Cooked mom's spaghetti",
+        location: 'In your bedroom' 
     }
 ]
 
