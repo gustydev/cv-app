@@ -1,11 +1,11 @@
-const initialInfo = {
+const info = {
     name: 'John Doe',
     email: 'johndoe@fakemail.com',
     phone: '(01) 23456-7890',
     location: 'Antarctica'
 }
 
-const initialSections = [
+const sections = [
     {
         id: 0,
         title: 'Education',
@@ -18,7 +18,7 @@ const initialSections = [
     }
 ];
 
-const initialData = [
+const data = [
     {
         id: 0,
         title: 'University of Whatever',
@@ -48,4 +48,4 @@ const initialData = [
     }
 ]
 
-export { initialInfo, initialSections, initialData };
+export { info, sections, data };

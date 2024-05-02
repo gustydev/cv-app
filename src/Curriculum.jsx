@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { initialInfo, initialData, initialSections } from './data';
+import { info, data, sections } from './data';
 
 function Info( {data} ) {
     return (
@@ -31,15 +31,15 @@ function Section( {name, data} ) {
     )
 }
 
-export default function Curriculum() {
+export default function Curriculum( {info, sections, data} ) {
     return (
         <div className='curriculum'>
-            <Info data={initialInfo} />
+            <Info data={info} />
             <div className="sections">
-                {initialSections.map((s) => {
-                    return <Section 
+                {sections.map((s) => {
+                    return <Section key={s.id}
                     name={s.title} 
-                    data={initialData.filter((d) => s.dataIds.includes(d.id))} />;
+                    data={data.filter((d) => s.dataIds.includes(d.id))} />;
                 })}
             </div>
         </div>
