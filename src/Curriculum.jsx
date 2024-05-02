@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { info, data, sections } from './data';
 
 function Info( {data} ) {
     return (
