@@ -1,4 +1,12 @@
-export default function Editor( {data, info, sections, onChange} ) {
+export default function Editor( {data, info, sections, onChange, changeData} ) {
+    function handleDelete(e) {
+        const deletedId = Number(e.target.parentNode.className.slice(23))
+        const deletedData = data.find((d) => d.id === deletedId)
+        changeData([...data].filter((d) => d !== deletedData));
+    }
+
+    console.log(data)
+    
     return (
         <div className='editor'>
             <div className="editor-info-section">
@@ -9,7 +17,6 @@ export default function Editor( {data, info, sections, onChange} ) {
                 <input type="text" className='editor-info-location' value={info.location} onChange={onChange} />
             </div>
             <div className='editor-cv-sections'>
-                <h1>Sections</h1>
                 {sections.map((s) => {
                     return (
                         <div key={s.id} className='editor-section'>
@@ -24,12 +31,14 @@ export default function Editor( {data, info, sections, onChange} ) {
                                             <input type="text" className='exp-role' value={d.role} onChange={onChange} />
                                             <input type="text" className='exp-info' value={d.info} onChange={onChange} />
                                             <input type="text" className='exp-location' value={d.location} onChange={onChange} />
+                                            <button onClick={(e) => {handleDelete(e)}}>Delete</button>
                                         </div>
                                     )
                                 } else {
                                     return null;
                                 }
                             })}
+                            <button>{'+ ' + s.title}</button>
                         </div>
                     )
                 })}

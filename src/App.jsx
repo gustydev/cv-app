@@ -6,7 +6,6 @@ import { useState } from 'react';
 function App() {
   const [initialData, changeData] = useState(data);
   const [initialInfo, changeInfo] = useState(info);
-  const [initialSections, changeSections] = useState(sections);
 
   function handleChange(e) {
     if (e.target.parentNode.className === 'editor-info-section') {
@@ -23,8 +22,8 @@ function App() {
 
   return (
     <>
-      <Editor data={initialData} info={initialInfo} sections={initialSections} onChange={handleChange}></Editor>
-      <Curriculum data={initialData} info={initialInfo} sections={initialSections}></Curriculum>
+      <Editor data={initialData} info={initialInfo} sections={sections} onChange={handleChange} changeData={changeData}></Editor>
+      <Curriculum data={initialData} info={initialInfo} sections={sections}></Curriculum>
     </>
   )
 }
