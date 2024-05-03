@@ -49,14 +49,36 @@ export default function Editor( {data, info, sections, onChange, changeData, cha
         changeSections(newSections)
     }
 
-    const takenIds = [];
-    data.forEach((d) => takenIds.push(d.id));
-    console.log(String(takenIds))
+    function handleAddSection(e) {
+        const section = {
+            title: '',
+            dataIds: []
+        }
+
+        const takenIds = [];
+        sections.forEach((s) => takenIds.push(s.id));
+
+        let sectionId = 0;
+        while (takenIds.includes(sectionId)) {
+            sectionId += 1;
+        }
+
+        section.id = sectionId;
+
+        const title = prompt('Name your section:');
+        if (!title) {
+            return;
+        }
+
+        section.title = title;
+
+        changeSections([...sections, section]);
+    }
     
     return (
         <div className='editor'>
             <div className="editor-info-section">
-                <h1>Personal information</h1>
+                <h1>Personal info</h1>
                 <input type='text' className='editor-info-name' value={info.name} onChange={onChange} />
                 <input type='text' className='editor-info-email' value={info.email} onChange={onChange} />
                 <input type="text" className='editor-info-phone' value={info.phone} onChange={onChange} />
@@ -84,10 +106,11 @@ export default function Editor( {data, info, sections, onChange, changeData, cha
                                     return null;
                                 }
                             })}
-                            <button onClick={(e) => handleAdd(e) }>{'+ ' + s.title}</button>
+                            <button onClick={(e) => handleAdd(e) }>{'Add ' + s.title}</button>
                         </div>
                     )
                 })}
+                <button onClick={(e) => handleAddSection(e)}>New section</button>
             </div>
         </div>
     )
