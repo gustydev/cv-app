@@ -19,13 +19,13 @@ export default function Editor( {data, info, sections, onChange, changeData, cha
         const sectionId = Number(e.target.parentNode.className.slice(23));
         const section = sections.find((s) => s.id === sectionId);
 
-        const dummy = {
-            title: 'Absolutely nothing', 
-            startDate: 'Now', 
-            endDate: 'Never', 
-            role: 'Nothing', 
-            info: 'I did nothing.', 
-            location: 'Nowhere'
+        const exp = {
+            title: '', 
+            startDate: '', 
+            endDate: '', 
+            role: '', 
+            info: '', 
+            location: ''
         }
 
         const takenIds = [];
@@ -36,19 +36,22 @@ export default function Editor( {data, info, sections, onChange, changeData, cha
             expId += 1;
         }
 
-        dummy.id = expId;
+        exp.id = expId;
         const newIds = Array.from(section.dataIds);
         newIds.push(expId)
         
-        // changeData([...data, dummy]);
-        // const newSections = [...sections].map((s) => 
-        // s.id === sectionId ? {...s, dataIds: newIds} : s
-        // )
+        changeData([...data, exp]);
+        
+        const newSections = [...sections].map((s) => 
+            s.id === sectionId ? {...s, dataIds: newIds} : s
+        )
 
-        // changeSections(newSections)
+        changeSections(newSections)
     }
 
-    console.log(data)
+    const takenIds = [];
+    data.forEach((d) => takenIds.push(d.id));
+    console.log(String(takenIds))
     
     return (
         <div className='editor'>
@@ -68,12 +71,12 @@ export default function Editor( {data, info, sections, onChange, changeData, cha
                                 if (s.dataIds.includes(d.id)) {
                                     return (
                                         <div className={'editor-section-exp' + ' exp-' + d.id} key={d.id}>
-                                            <input type="text" className='exp-title' value={d.title} onChange={onChange} />
-                                            <input type="text" className='exp-startDate' value={d.startDate} onChange={onChange} />
-                                            <input type="text" className='exp-endDate' value={d.endDate} onChange={onChange} />
-                                            <input type="text" className='exp-role' value={d.role} onChange={onChange} />
-                                            <input type="text" className='exp-info' value={d.info} onChange={onChange} />
-                                            <input type="text" className='exp-location' value={d.location} onChange={onChange} />
+                                            <input type="text" className='exp-title' value={d.title} onChange={onChange} placeholder='Institution' />
+                                            <input type="text" className='exp-startDate' value={d.startDate} onChange={onChange} placeholder='Start date'/>
+                                            <input type="text" className='exp-endDate' value={d.endDate} onChange={onChange} placeholder='End date'/>
+                                            <input type="text" className='exp-role' value={d.role} onChange={onChange} placeholder='Position, degree or role'/>
+                                            <input type="text" className='exp-info' value={d.info} onChange={onChange} placeholder='Description'/>
+                                            <input type="text" className='exp-location' value={d.location} onChange={onChange} placeholder='Location'/>
                                             <button onClick={(e) => {handleDelete(e)}}>Delete</button>
                                         </div>
                                     )

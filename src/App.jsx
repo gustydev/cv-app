@@ -25,6 +25,7 @@ function App() {
       changeData([...initialData].map((d) => 
         d.id === expId ? alteredData : d
       ))
+      
     }
   }
 
