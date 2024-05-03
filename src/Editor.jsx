@@ -1,11 +1,25 @@
-export default function Editor( {data, info, sections, onChange, changeData} ) {
+export default function Editor( {data, info, sections, onChange, changeData, changeSections} ) {
     function handleDelete(e) {
         const deletedId = Number(e.target.parentNode.className.slice(23))
+
         const deletedData = data.find((d) => d.id === deletedId)
         changeData([...data].filter((d) => d !== deletedData));
+
+        const alteredSection = sections.find((s) => s.dataIds.includes(deletedId))
+        const filteredIds = alteredSection.dataIds.filter(i => i !== deletedId);
+        
+        const newSections = [...sections].map((s) => 
+        s.id === alteredSection.id ? {...s, dataIds: filteredIds} : s
+        )
+
+        changeSections(newSections)
     }
 
-    console.log(data)
+    console.log(sections)
+
+    function handleAdd(e) {
+        console.log(e.target.parentNode)
+    }
     
     return (
         <div className='editor'>
@@ -38,7 +52,7 @@ export default function Editor( {data, info, sections, onChange, changeData} ) {
                                     return null;
                                 }
                             })}
-                            <button>{'+ ' + s.title}</button>
+                            <button onClick={(e) => handleAdd(e) }>{'+ ' + s.title}</button>
                         </div>
                     )
                 })}
