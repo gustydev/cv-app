@@ -3,7 +3,7 @@ export default function Editor( {data, info, sections, onChange, changeData, cha
         const deletedId = Number(e.target.parentNode.className.slice(23))
 
         const deletedData = data.find((d) => d.id === deletedId)
-        changeData([...data].filter((d) => d !== deletedData));
+        changeData([...data].filter((d) => d.id !== deletedData.id));
 
         const alteredSection = sections.find((s) => s.dataIds.includes(deletedId))
         const filteredIds = alteredSection.dataIds.filter(i => i !== deletedId);
@@ -15,11 +15,40 @@ export default function Editor( {data, info, sections, onChange, changeData, cha
         changeSections(newSections)
     }
 
-    console.log(sections)
-
     function handleAdd(e) {
-        console.log(e.target.parentNode)
+        const sectionId = Number(e.target.parentNode.className.slice(23));
+        const section = sections.find((s) => s.id === sectionId);
+
+        const dummy = {
+            title: 'Absolutely nothing', 
+            startDate: 'Now', 
+            endDate: 'Never', 
+            role: 'Nothing', 
+            info: 'I did nothing.', 
+            location: 'Nowhere'
+        }
+
+        const takenIds = [];
+        data.forEach((d) => takenIds.push(d.id));
+        
+        let expId = 0;
+        while (takenIds.includes(expId)) {
+            expId += 1;
+        }
+
+        dummy.id = expId;
+        const newIds = Array.from(section.dataIds);
+        newIds.push(expId)
+        
+        // changeData([...data, dummy]);
+        // const newSections = [...sections].map((s) => 
+        // s.id === sectionId ? {...s, dataIds: newIds} : s
+        // )
+
+        // changeSections(newSections)
     }
+
+    console.log(data)
     
     return (
         <div className='editor'>
@@ -33,7 +62,7 @@ export default function Editor( {data, info, sections, onChange, changeData, cha
             <div className='editor-cv-sections'>
                 {sections.map((s) => {
                     return (
-                        <div key={s.id} className='editor-section'>
+                        <div key={s.id} className={'editor-section' + ' section-' + s.id}>
                             <h1>{s.title}</h1>
                             {data.map((d) => {
                                 if (s.dataIds.includes(d.id)) {
