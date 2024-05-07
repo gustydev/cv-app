@@ -31,6 +31,7 @@ function App() {
 
   return (
     <>
+    <h1 className='title'>CV App</h1>
       <Editor 
       data={initialData} 
       info={initialInfo} 

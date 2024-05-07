@@ -79,10 +79,10 @@ export default function Editor( {data, info, sections, onChange, changeData, cha
         <div className='editor'>
             <div className="editor-info-section">
                 <h1>Personal info</h1>
-                <input type='text' className='editor-info-name' value={info.name} onChange={onChange} />
-                <input type='text' className='editor-info-email' value={info.email} onChange={onChange} />
-                <input type="text" className='editor-info-phone' value={info.phone} onChange={onChange} />
-                <input type="text" className='editor-info-location' value={info.location} onChange={onChange} />
+                <input type='text' className='editor-info-name' value={info.name} onChange={onChange} placeholder='Name' />
+                <input type='text' className='editor-info-email' value={info.email} onChange={onChange} placeholder='Email' />
+                <input type="text" className='editor-info-phone' value={info.phone} onChange={onChange} placeholder='Phone' />
+                <input type="text" className='editor-info-location' value={info.location} onChange={onChange} placeholder="Location" />
             </div>
             <div className='editor-cv-sections'>
                 {sections.map((s) => {
@@ -106,7 +106,7 @@ export default function Editor( {data, info, sections, onChange, changeData, cha
                                     return null;
                                 }
                             })}
-                            <button onClick={(e) => handleAdd(e) }>{'Add ' + s.title}</button>
+                            <button onClick={(e) => handleAdd(e) }>{'+ ' + s.title}</button>
                         </div>
                     )
                 })}

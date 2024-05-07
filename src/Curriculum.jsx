@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 function Info( {data} ) {
     return (
         <div className='info'>
@@ -19,7 +17,9 @@ function Section( {name, data} ) {
                 return (
                 <div key={d.id} className='experience'>
                     <div className='experience-title'>{d.title}</div>
-                    <div className='experience-date'>{d.startDate + ' -'}&nbsp;{d.endDate}</div>
+                    <div className='experience-date'>
+                    {(d.startDate && d.endDate) ? (d.startDate + ' - ' + d.endDate) : (d.startDate + d.endDate)}
+                    </div>
                     <div className='experience-role'>{d.role}</div>
                     <div className='experience-location'>{d.location}</div>
                     <div className='experience-info'>{d.info}</div>
