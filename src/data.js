@@ -24,27 +24,27 @@ const data = [
         title: 'University of Whatever',
         startDate: 'Apr. 2020',
         endDate: 'Apr. 2024',
-        role: 'PHD in Maths',
+        role: 'PHD in Mathematics',
         info: 'Learned a lot of equations!',
-        location: 'At home'
+        location: 'London'
     },
     {
         id: 1,
-        title: 'Joe Accounting',
+        title: 'John Accounting',
         startDate: 'May 2020',
         endDate: 'Current',
         role: 'Master Accountant',
-        info: 'I account for all of the things, nothing gets past',
+        info: 'I account for everything, nothing gets past',
         location: 'New York City'
     },
     {
         id: 2,
-        title: 'Joe Mama Restaurant',
-        startDate: 'Today',
-        endDate: 'Tomorrow',
+        title: 'Joe Meals',
+        startDate: 'Jan. 2003',
+        endDate: 'Dec. 2009',
         role: 'Master Chef',
-        info: "Cooked mom's spaghetti",
-        location: 'In your bedroom' 
+        info: "Cooked lots of spaghetti.",
+        location: 'Tokyo' 
     }
 ]
 

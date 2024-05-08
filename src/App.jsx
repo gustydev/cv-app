@@ -9,14 +9,14 @@ function App() {
   const [initialSections, changeSections] = useState(sections);
 
   function handleChange(e) {
-    if (e.target.parentNode.className === 'editor-info-section') {
-      const newValue = e.target.className.slice(12);
-      const newInfo = {...initialInfo, [newValue]: e.target.value};
+    if (e.target.parentNode.className === 'edit-info') {
+      const changedValue = e.target.className.slice(10);
+      const newInfo = {...initialInfo, [changedValue]: e.target.value};
 
       changeInfo(newInfo)
 
     } else {
-      const changedValue = e.target.className.slice(4);
+      const changedValue = e.target.className.slice(9);
       const expId = Number(e.target.parentNode.classList[1].substring(4));
       const alteredData = {...initialData.find((d) => d.id === expId)};
 
@@ -31,7 +31,7 @@ function App() {
 
   return (
     <>
-    <h1 className='title'>CV App</h1>
+    <h1 className='title'>CV Builder</h1>
       <Editor 
       data={initialData} 
       info={initialInfo} 
