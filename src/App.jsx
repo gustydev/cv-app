@@ -31,15 +31,16 @@ function App() {
 
   return (
     <>
-    <h1 className='title'>CV Builder</h1>
+      <h1 className='title'>CV Builder</h1>
       <Editor 
-      data={initialData} 
-      info={initialInfo} 
-      sections={initialSections} 
-      onChange={handleChange} 
-      changeData={changeData} 
-      changeSections={changeSections} />
+        data={initialData} 
+        info={initialInfo} 
+        sections={initialSections} 
+        onChange={handleChange} 
+        changeData={changeData} 
+        changeSections={changeSections} />
       <Curriculum data={initialData} info={initialInfo} sections={initialSections} />
+      <button className='print-button' onClick={() => window.print()}></button>
     </>
   )
 }
