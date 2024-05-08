@@ -1,6 +1,6 @@
 import Curriculum from "./Curriculum";
 import Editor from './Editor.jsx';
-import { data, info, sections } from "./data";
+import { data, info, sections } from "../data";
 import { useState } from 'react';
 
 function App() {
@@ -31,7 +31,7 @@ function App() {
 
   return (
     <>
-      <h1 className='title'>CV Builder</h1>
+      <h1 className='title'>CVCraft</h1>
       <Editor 
         data={initialData} 
         info={initialInfo} 
